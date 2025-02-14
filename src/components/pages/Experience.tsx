@@ -1,32 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-
-const experiences = [
-  {
-    company: "Devnex Technologies",
-    role: "Frontend Developer",
-    duration: "September 2024 – Present",
-    location: "Remote",
-    logo: "https://devnex.in/assets/logo-BIBESWXT.svg",
-    responsibilities: [
-      "Specialized in frontend development using React and Tailwind CSS, delivering user-centric and responsive designs.",
-      "Built reusable components and implemented state management with Redux, improving scalability and maintainability.",
-      "Optimized UI/UX by resolving cross-browser compatibility issues and enhancing responsiveness through performance debugging.",
-    ],
-  },
-  {
-    company: "DAPS Software Pvt. Limited",
-    role: "Software Engineer Intern",
-    duration: "November 2023 – September 2024",
-    location: "Remote",
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQFCQ8khnok90A/company-logo_200_200/company-logo_200_200/0/1688567449971/dapssoftware_logo?e=1747267200&v=beta&t=RCJ0PqupagGf-HKgROeJ6j3J9v5uQd2-4xSo3-_oaHc",
-    responsibilities: [
-      "Designed and implemented advanced SQL queries to streamline data extraction, transformation, and analysis.",
-      "Contributed to full-stack projects by developing backend services, designing RESTful APIs, and integrating them with frontend interfaces.",
-      "Gained experience in end-to-end software development, ensuring optimal functionality and performance.",
-    ],
-  },
-];
+import { experiences } from "../../constent";
 
 export default function Experience() {
   const [expanded, setExpanded] = useState<number | null>(null);

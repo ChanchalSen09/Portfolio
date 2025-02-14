@@ -1,22 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Linkedin, Youtube, Github } from "lucide-react";
-import LeetcodeIco from "../../assets/leetcodeioc.svg";
-
-const NAV_ITEMS = [
-  { label: "EXPERIENCE", link: "#experience" },
-  { label: "SKILLS", link: "#skills" },
-  { label: "PROJECTS", link: "#projects" },
-  { label: "ABOUT ME", link: "#about" },
-  { label: "CONTACT", link: "#contact" },
-];
-
-const SOCIAL_LINKS = [
-  { icon: Linkedin, link: "https://linkedin.com" },
-  { icon: Youtube, link: "https://youtube.com" },
-  { icon: Github, link: "https://github.com" },
-  { icon: LeetcodeIco, link: "https://leetcode.com" },
-];
+import { Menu, X } from "lucide-react";
+import { NavbarContents, SOCIAL_LINKS } from "../../constent";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,7 +54,7 @@ const Navbar = () => {
 
         {/* Desktop Navbar */}
         <div className="hidden lg:flex space-x-8 text-gray-700 dark:text-gray-300">
-          {NAV_ITEMS.map(({ label, link }, index) => (
+          {NavbarContents.map(({ label, link }, index) => (
             <motion.a
               key={index}
               href={link}
@@ -123,7 +108,7 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="absolute top-16 left-0 w-full bg-white dark:bg-gray-900 shadow-md lg:hidden">
             <ul className="flex flex-col space-y-6 px-6 py-4 text-gray-700 dark:text-gray-300">
-              {NAV_ITEMS.map(({ label, link }, index) => (
+              {NavbarContents.map(({ label, link }, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
