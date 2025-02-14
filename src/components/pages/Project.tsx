@@ -22,7 +22,7 @@ import LearnhubDemo3 from "../../assets/ProjectImages/Learnhub/Demo3.webp";
 
 type ProjectStatus = "Live" | "Under Development" | "Coming Soon";
 
-const techIcons: Record<string, JSX.Element> = {
+const techIcons: Record<string, React.JSX.Element> = {
   React: <SiReact className="text-blue-500" />,
   "Node.js": <SiNodedotjs className="text-green-600" />,
   MongoDB: <SiMongodb className="text-green-500" />,
@@ -81,13 +81,13 @@ const statusColors: Record<ProjectStatus, string> = {
 
 export default function Projects() {
   return (
-    <section className="py-6 px-4 sm:px-6 md:px-12">
-      <h2 className="text-3xl font-bold text-center mb-6">Projects</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section className="px-4 py-6 sm:px-6 md:px-12">
+      <h2 className="mb-6 text-3xl font-bold text-center">Projects</h2>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col"
+            className="flex flex-col p-4 transition-all bg-white rounded-lg shadow-md hover:shadow-xl"
             whileHover={{ scale: 1.05 }}>
             <div className="w-full">
               <Carousel
@@ -98,20 +98,20 @@ export default function Projects() {
                 interval={3000}
                 stopOnHover
                 showArrows={false}
-                className="rounded-md overflow-hidden">
+                className="overflow-hidden rounded-md">
                 {project.images.map((img, idx) => (
                   <div key={idx} className="h-45 sm:h-48 md:h-54 lg:h-60">
                     <img
                       src={img}
                       alt={project.name}
-                      className="w-full h-full object-cover"
+                      className="object-cover w-full h-full"
                     />
                   </div>
                 ))}
               </Carousel>
             </div>
-            <h3 className="text-xl font-semibold mt-3">{project.name}</h3>
-            <p className="text-gray-600 mb-3">{project.description}</p>
+            <h3 className="mt-3 text-xl font-semibold">{project.name}</h3>
+            <p className="mb-3 text-gray-600">{project.description}</p>
 
             <div className="flex flex-row gap-2 my-4">
               <h4 className="text-sm font-semibold text-gray-700">
@@ -129,13 +129,13 @@ export default function Projects() {
               } ${statusColors[project.status]}`}>
               {project.status}
             </span>
-            <div className="mt-3 flex gap-6 flex-wrap">
+            <div className="flex flex-wrap gap-6 mt-3">
               {project.liveLink !== "#" && (
                 <a
                   href={project.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 font-semibold hover:underline flex items-center gap-1">
+                  className="flex items-center gap-1 font-semibold text-blue-600 hover:underline">
                   <FaExternalLinkAlt /> Live Preview
                 </a>
               )}
@@ -144,7 +144,7 @@ export default function Projects() {
                   href={project.codeLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 font-semibold hover:underline flex items-center gap-1">
+                  className="flex items-center gap-1 font-semibold text-gray-700 hover:underline">
                   <FaGithub /> View Code
                 </a>
               )}
