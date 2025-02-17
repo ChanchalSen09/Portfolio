@@ -98,8 +98,7 @@ export default function Footer() {
                   ? "bg-green-500 cursor-default"
                   : "bg-blue-600 hover:bg-blue-500"
               }`}
-              aria-label="Download Resume"
-              disabled>
+              aria-label="Download Resume">
               {isDownloaded ? "🎉 Downloaded" : "📄 Download Resume"}
             </motion.button>
           </motion.div>

@@ -25,14 +25,17 @@ export const NavbarContents = [
 ];
 
 export const SOCIAL_LINKS = [
-  { icon: Linkedin, link: "https://linkedin.com" },
-  { icon: Youtube, link: "https://youtube.com" },
-  { icon: Github, link: "https://github.com" },
-  { icon: LeetcodeIco, link: "https://leetcode.com" },
+  { icon: Linkedin, link: "https://www.linkedin.com/in/chanchal09/" },
+  {
+    icon: Youtube,
+    link: "https://www.youtube.com/channel/UCSmxp1l5pngNM9zk1VJQoOQ",
+  },
+  { icon: Github, link: "https://github.com/ChanchalSen09" },
+  { icon: LeetcodeIco, link: "https://leetcode.com/u/Chanchalsen09/" },
 ];
 
 export const SOCIAL = [
-  { id: "facebook", icon: FaFacebookF, url: "#" },
+  { id: "facebook", icon: FaFacebookF, url: "" },
   {
     id: "twitter",
     icon: FaTwitter,
@@ -43,7 +46,11 @@ export const SOCIAL = [
     icon: FaInstagram,
     url: "https://www.instagram.com/chanchal_sen09/",
   },
-  { id: "linkedin", icon: FaLinkedin, url: "#" },
+  {
+    id: "linkedin",
+    icon: FaLinkedin,
+    url: "https://www.linkedin.com/in/chanchal09/",
+  },
 ];
 
 export const TECH_STACK = [
