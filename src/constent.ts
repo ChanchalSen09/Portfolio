@@ -67,7 +67,7 @@ export const experiences = [
     role: "Frontend Developer",
     duration: "September 2024 – Present",
     location: "Remote",
-    logo: "https://devnex.in/assets/logo-BIBESWXT.svg",
+    logo: "https://media.licdn.com/dms/image/v2/D560BAQFtm9yUKcjmJw/company-logo_200_200/company-logo_200_200/0/1724790501660/devnex_technologies_pvt_ltd_logo?e=1748476800&v=beta&t=mJ_9zqYPjVVppyqlOD8MhpirR3gfwXHHMM03Ady57Tc",
     responsibilities: [
       "Specialized in frontend development using React and Tailwind CSS, delivering user-centric and responsive designs.",
       "Built reusable components and implemented state management with Redux, improving scalability and maintainability.",
