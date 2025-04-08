@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { TextFade, TypingEffect } from "../animations/TextAnimations";
-import AvatarImg from "./src/assets/ghibliimg.png";
+import AvatarImg from "../../assets/ghibliimg.png";
 function MainAbout() {
   return (
-    <div className="flex flex-col items-center justify-center text-center  md:flex-row md:text-left">
+    <div className="flex flex-col items-center justify-center text-center md:flex-row md:text-left">
       <div className="">
         <TextFade direction="up">
           <h1 className="text-5xl font-bold text-black md:text-6xl">
