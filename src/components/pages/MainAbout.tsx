@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TextFade, TypingEffect } from "../animations/TextAnimations";
-import AvatarImg from "../../assets/Avatar.webp";
+import AvatarImg from "./src/assets/ghibliimg.png";
 function MainAbout() {
   return (
     <div className="flex flex-col items-center justify-center text-center  md:flex-row md:text-left">
