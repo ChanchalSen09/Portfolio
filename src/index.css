@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.space-bg {
+    background-image: radial-gradient(#ffffff33 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-color: #0b0f1a;
+}

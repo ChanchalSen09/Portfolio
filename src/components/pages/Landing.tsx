@@ -12,7 +12,7 @@ const sectionVariants = {
 
 export default function Landing() {
   return (
-    <div className="flex flex-col items-center px-4 md:px-8 lg:px-16 xl:px-24 mt-16 py-20 space-y-16">
+    <div className="flex flex-col items-center px-4 py-20 mt-16 space-y-16 md:px-8 lg:px-16 xl:px-24">
       <motion.section
         className="w-full max-w-5xl"
         initial="hidden"
@@ -41,7 +41,7 @@ export default function Landing() {
       </motion.section>
 
       <motion.section
-        className="w-full max-w-2xl"
+        className="w-full"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -50,7 +50,7 @@ export default function Landing() {
       </motion.section>
 
       <motion.section
-        className="w-full flex flex-col items-center justify-center max-w-8xl"
+        className="flex flex-col items-center justify-center w-full max-w-8xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}

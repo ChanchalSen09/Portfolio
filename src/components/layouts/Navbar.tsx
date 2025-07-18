@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { NavbarContents, SOCIAL_LINKS } from "../../constent";
 
 const Navbar = () => {
@@ -8,7 +8,6 @@ const Navbar = () => {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
 
-  // Check & Set Mobile View
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
@@ -17,7 +16,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const theme = localStorage.getItem("theme") || "light";
+    const theme = localStorage.getItem("theme") || "dark";
     setDarkMode(theme === "dark");
   }, []);
 
@@ -33,43 +32,46 @@ const Navbar = () => {
   }, [darkMode]);
 
   return (
-    <nav className="fixed top-0 w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="fixed top-0 z-50 w-full shadow-lg backdrop-blur-md">
+      {/* Galaxy Background Layer */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] opacity-95" />
+
+      <div className="container relative z-10 flex items-center justify-between px-6 py-4 mx-auto">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5 }}
           whileHover={{ scale: 1.1 }}
-          className="text-2xl font-bold text-gray-900 dark:text-white">
+          className="text-2xl font-bold text-white drop-shadow-glow">
           CHANCHAL
         </motion.div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button
-          className="text-gray-700 dark:text-gray-300 lg:hidden"
+          className="text-white lg:hidden"
           onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* Desktop Navbar */}
-        <div className="hidden lg:flex space-x-8 text-gray-700 dark:text-gray-300">
+        {/* Desktop Links */}
+        <div className="hidden space-x-8 lg:flex">
           {NavbarContents.map(({ label, link }, index) => (
             <motion.a
               key={index}
               href={link}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ scale: 1.1 }}
-              className="cursor-pointer hover:text-gray-900 dark:hover:text-white">
+              className="font-medium text-white transition-all hover:text-cyan-300">
               {label}
             </motion.a>
           ))}
         </div>
 
-        {/* Social Icons + Theme Toggle */}
-        <div className="hidden lg:flex space-x-4">
+        {/* Social + Theme Toggle */}
+        <div className="items-center hidden space-x-4 lg:flex">
           {SOCIAL_LINKS.map(({ icon: Icon, link }, index) => (
             <motion.a
               key={index}
@@ -78,23 +80,24 @@ const Navbar = () => {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ scale: 1.2, rotate: 5 }}
-              className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              className="text-white hover:text-violet-400">
               {typeof Icon === "string" ? (
                 <img src={Icon} alt="icon" className="w-5 h-5" />
               ) : (
-                <Icon size={22} />
+                <Icon size={20} />
               )}
             </motion.a>
           ))}
-          {/* Theme Toggle Button */}
-          {/* <motion.button
+
+          {/* Theme Toggle */}
+          <motion.button
             onClick={() => setDarkMode((prev) => !prev)}
             whileHover={{ scale: 1.2 }}
-            className="text-gray-700 dark:text-gray-300">
-            {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-          </motion.button> */}
+            className="text-white transition-all hover:text-yellow-300">
+            {darkMode ? <Sun size={22} /> : <Moon size={22} />}
+          </motion.button>
         </div>
       </div>
 
@@ -106,25 +109,22 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-16 left-0 w-full bg-white dark:bg-gray-900 shadow-md lg:hidden">
-            <ul className="flex flex-col space-y-6 px-6 py-4 text-gray-700 dark:text-gray-300">
+            className="absolute left-0 w-full bg-[#121212] top-16 shadow-md dark:bg-black lg:hidden">
+            <ul className="flex flex-col px-6 py-4 space-y-6 text-white">
               {NavbarContents.map(({ label, link }, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}>
-                  <a
-                    href={link}
-                    className="hover:text-gray-900 dark:hover:text-white">
+                  <a href={link} className="hover:text-cyan-300">
                     {label}
                   </a>
                 </motion.li>
               ))}
             </ul>
 
-            {/* Mobile Social Icons */}
-            <div className="flex justify-center space-x-6 py-4">
+            <div className="flex justify-center py-4 space-x-6">
               {SOCIAL_LINKS.map(({ icon: Icon, link }, index) => (
                 <motion.a
                   key={index}
@@ -132,11 +132,11 @@ const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.2 }}
-                  className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                  className="text-white hover:text-violet-400">
                   {typeof Icon === "string" ? (
                     <img src={Icon} alt="icon" className="w-6 h-6" />
                   ) : (
-                    <Icon size={24} />
+                    <Icon size={22} />
                   )}
                 </motion.a>
               ))}

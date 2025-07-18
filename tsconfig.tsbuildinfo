@@ -1,1 +1,22 @@
-{"root":["./vite.config.ts","./src/App.tsx","./src/constent.ts","./src/main.tsx","./src/vite-env.d.ts","./src/components/animations/TextAnimations.tsx","./src/components/layouts/Footer.tsx","./src/components/layouts/Navbar.tsx","./src/components/layouts/Outlet.tsx","./src/components/pages/Contact.tsx","./src/components/pages/Experience.tsx","./src/components/pages/Landing.tsx","./src/components/pages/MainAbout.tsx","./src/components/pages/Project.tsx","./src/components/pages/Skills.tsx","./src/components/utils/Loader.tsx","./src/routes/Router.tsx"],"version":"5.7.3"}
+{
+  "root": [
+    "./vite.config.ts",
+    "./src/App.tsx",
+    "./src/constent.ts",
+    "./src/main.tsx",
+    "./src/vite-env.d.ts",
+    "./src/components/animations/TextAnimations.tsx",
+    "./src/components/layouts/Footer.tsx",
+    "./src/components/layouts/Navbar.tsx",
+    "./src/components/layouts/Outlet.tsx",
+    "./src/components/pages/Contact.tsx",
+    "./src/components/pages/Experience.tsx",
+    "./src/components/pages/Landing.tsx",
+    "./src/components/pages/MainAbout.tsx",
+    "./src/components/pages/Project.tsx",
+    "./src/components/pages/Skills.tsx",
+    "./src/components/utils/Loader.tsx",
+    "./src/routes/Router.tsx"
+  ],
+  "version": "5.7.3"
+}
