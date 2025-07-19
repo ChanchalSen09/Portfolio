@@ -125,8 +125,8 @@ export default function Skills() {
             initial={{ width: 0 }}
             animate={{ width: `${categoryLevels[activeCategory]}%` }}
             transition={{
-              duration: 1,
-              ease: "easeInOut",
+              duration: 0.5,
+              ease: [0.42, 0, 0.58, 1],
             }}
           />
         </div>
