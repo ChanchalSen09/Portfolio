@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import type { JSX } from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import {
   SiReact,
@@ -21,7 +22,8 @@ import LearnhubDemo1 from "../../assets/ProjectImages/Learnhub/Demo1.webp";
 import LearnhubDemo2 from "../../assets/ProjectImages/Learnhub/Demo2.webp";
 import LearnhubDemo3 from "../../assets/ProjectImages/Learnhub/Demo3.webp";
 
-const techIcons = {
+// Icon mapping
+const techIcons: Record<string, JSX.Element> = {
   React: <SiReact className="text-cyan-400" />,
   "Node.js": <SiNodedotjs className="text-green-400" />,
   MongoDB: <SiMongodb className="text-green-500" />,
@@ -33,6 +35,7 @@ const techIcons = {
   Postman: <SiPostman className="text-orange-400" />,
 };
 
+// Project data
 const projects = [
   {
     name: "Quizfy",
@@ -72,7 +75,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center text-transparent text-white mb-14 md:text-5xl drop-shadow-md">
+          className="text-3xl font-bold text-center text-white mb-14 md:text-5xl drop-shadow-md">
           Projects
         </motion.h2>
 
@@ -96,11 +99,13 @@ export default function Projects() {
                   <img
                     key={i}
                     src={img}
-                    alt={`${project.name}-${i}`}
+                    alt={`${project.name}-screenshot-${i + 1}`}
                     className="object-cover w-full h-56 md:h-64"
+                    loading="lazy"
                   />
                 ))}
               </Carousel>
+
               <div className="p-6">
                 <h3 className="mb-2 text-2xl font-semibold text-purple-300">
                   {project.name}
@@ -108,16 +113,18 @@ export default function Projects() {
                 <p className="mb-4 leading-relaxed text-gray-300">
                   {project.description}
                 </p>
+
                 <div className="flex flex-wrap gap-3 mb-4">
                   {project.techStack.map((tech, i) => (
                     <span
                       key={i}
                       className="flex items-center gap-1 px-2 py-1 text-sm bg-[#222] text-white rounded-md"
                       title={tech}>
-                      {techIcons[tech]} {tech}
+                      {techIcons[tech] ?? null} {tech}
                     </span>
                   ))}
                 </div>
+
                 <div className="flex gap-6 mt-3 text-sm font-semibold">
                   <a
                     href={project.liveLink}
