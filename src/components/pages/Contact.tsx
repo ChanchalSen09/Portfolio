@@ -23,27 +23,27 @@ const Contact = () => {
           <form className="space-y-6">
             <div>
               <label className="block mb-1 text-sm font-medium text-gray-200">
-                Your Name
+                Name
               </label>
               <input
                 type="text"
-                placeholder="John Doe"
+                placeholder=""
                 className="w-full p-3 text-white bg-gray-800 rounded-lg outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
             <div>
               <label className="block mb-1 text-sm font-medium text-gray-200">
-                Your Email
+                Email
               </label>
               <input
                 type="email"
-                placeholder="you@example.com"
+                placeholder=""
                 className="w-full p-3 text-white bg-gray-800 rounded-lg outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
             <div>
               <label className="block mb-1 text-sm font-medium text-gray-200">
-                Your Message
+                Message
               </label>
               <textarea
                 rows={5}
