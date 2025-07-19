@@ -22,11 +22,7 @@ const Layout = (): React.JSX.Element => {
     <>
       {loading ? (
         <Loader
-          messages={[
-            "Welcome to My Awesome Portfolio!",
-            "Crafting Something Amazing",
-            "Just a moment...",
-          ]}
+          messages={["Crafting Something Amazing", "Just a moment..."]}
           theme={"dark"}
         />
       ) : (
