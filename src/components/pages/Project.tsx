@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
-import type { JSX } from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import type { JSX } from "react";
 import {
   SiReact,
   SiNodedotjs,
@@ -14,7 +13,9 @@ import {
 } from "react-icons/si";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useMemo } from "react";
 
+// Assets
 import QuizeDemo1 from "../../assets/ProjectImages/Quizifyf/Demo1.webp";
 import QuizeDemo2 from "../../assets/ProjectImages/Quizifyf/Demo2.webp";
 import QuizeDemo3 from "../../assets/ProjectImages/Quizifyf/Demo3.webp";
@@ -22,20 +23,7 @@ import LearnhubDemo1 from "../../assets/ProjectImages/Learnhub/Demo1.webp";
 import LearnhubDemo2 from "../../assets/ProjectImages/Learnhub/Demo2.webp";
 import LearnhubDemo3 from "../../assets/ProjectImages/Learnhub/Demo3.webp";
 
-// Icon mapping
-const techIcons: Record<string, JSX.Element> = {
-  React: <SiReact className="text-cyan-400" />,
-  "Node.js": <SiNodedotjs className="text-green-400" />,
-  MongoDB: <SiMongodb className="text-green-500" />,
-  Express: <SiExpress className="text-gray-400" />,
-  "Tailwind CSS": <SiTailwindcss className="text-sky-300" />,
-  Firebase: <SiFirebase className="text-yellow-400" />,
-  TypeScript: <SiTypescript className="text-blue-400" />,
-  JavaScript: <SiJavascript className="text-yellow-300" />,
-  Postman: <SiPostman className="text-orange-400" />,
-};
-
-// Project data
+// Projects Data
 const projects = [
   {
     name: "Quizfy",
@@ -65,36 +53,45 @@ const projects = [
 ];
 
 export default function Projects() {
-  return (
-    <section className="w-full px-6 py-20 text-white font-spaceGrotesk bg-[url('/stars-bg.svg')] bg-cover bg-center relative">
-      <div className="absolute inset-0 z-0 bg-black/70 backdrop-blur-sm" />
+  const techIcons = useMemo<Record<string, JSX.Element>>(
+    () => ({
+      React: <SiReact className="text-cyan-400" />,
+      "Node.js": <SiNodedotjs className="text-green-400" />,
+      MongoDB: <SiMongodb className="text-green-500" />,
+      Express: <SiExpress className="text-gray-400" />,
+      "Tailwind CSS": <SiTailwindcss className="text-sky-300" />,
+      Firebase: <SiFirebase className="text-yellow-400" />,
+      TypeScript: <SiTypescript className="text-blue-400" />,
+      JavaScript: <SiJavascript className="text-yellow-300" />,
+      Postman: <SiPostman className="text-orange-400" />,
+    }),
+    []
+  );
 
+  return (
+    <section
+      className="w-full px-6 py-20 text-white font-spaceGrotesk bg-[url('/stars-bg.svg')] bg-cover bg-center relative"
+      id="projects">
+      <div className="absolute inset-0 z-0 bg-black/70 backdrop-blur-sm" />
       <div className="relative z-10 max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="text-3xl font-bold text-center text-white mb-14 md:text-5xl drop-shadow-md">
+        <h2 className="text-3xl font-bold text-center text-white md:text-5xl mb-14 drop-shadow-md">
           Projects
-        </motion.h2>
+        </h2>
 
         <div className="grid gap-10 md:grid-cols-2">
           {projects.map((project, idx) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.15 }}
-              viewport={{ once: true }}
-              className="overflow-hidden bg-gradient-to-br from-[#141414] to-[#1e1e1e] border border-[#333] rounded-2xl shadow-[0_0_15px_#6b21a8] hover:shadow-purple-500/50 hover:scale-[1.025] transition-all">
+              className="overflow-hidden bg-gradient-to-br from-[#141414] to-[#1e1e1e] border border-[#333] rounded-2xl shadow-[0_0_15px_#6b21a8] hover:shadow-purple-500/40 transition-all duration-300">
               <Carousel
                 showThumbs={false}
                 showStatus={false}
                 infiniteLoop
                 autoPlay
-                interval={4000}
-                showArrows={false}>
+                interval={5000}
+                showArrows={false}
+                swipeable
+                emulateTouch>
                 {project.images.map((img, i) => (
                   <img
                     key={i}
@@ -110,11 +107,9 @@ export default function Projects() {
                 <h3 className="mb-2 text-2xl font-semibold text-purple-300">
                   {project.name}
                 </h3>
-                <p className="mb-4 leading-relaxed text-gray-300">
-                  {project.description}
-                </p>
+                <p className="mb-4 text-gray-300">{project.description}</p>
 
-                <div className="flex flex-wrap gap-3 mb-4">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.techStack.map((tech, i) => (
                     <span
                       key={i}
@@ -142,7 +137,7 @@ export default function Projects() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

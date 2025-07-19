@@ -1,27 +1,32 @@
-import { useState, useEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { NavbarContents, SOCIAL_LINKS } from "../../constent";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const [darkMode, setDarkMode] = useState<boolean | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
+  // Mobile detection (debounced)
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    const checkMobile = () => {
+      const isNowMobile = window.innerWidth < 1024;
+      setIsMobile((prev) => (prev !== isNowMobile ? isNowMobile : prev));
+    };
     checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    const resizeHandler = () => requestAnimationFrame(checkMobile);
+    window.addEventListener("resize", resizeHandler);
+    return () => window.removeEventListener("resize", resizeHandler);
   }, []);
 
-  useEffect(() => {
+  // Dark mode from localStorage
+  useLayoutEffect(() => {
     const theme = localStorage.getItem("theme") || "dark";
     setDarkMode(theme === "dark");
   }, []);
 
   useEffect(() => {
-    if (darkMode === null) return;
     if (darkMode) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -33,28 +38,29 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 z-50 w-full shadow-lg backdrop-blur-md">
-      {/* Galaxy Background Layer */}
+      {/* Background Layer */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] opacity-95" />
 
       <div className="container relative z-10 flex items-center justify-between px-6 py-4 mx-auto">
         {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          whileHover={{ scale: 1.1 }}
-          className="text-2xl font-bold text-white drop-shadow-glow">
-          CHANCHAL
-        </motion.div>
-
-        {/* Mobile Menu Toggle */}
+        <a href="#about" className="flex items-center space-x-2">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.1 }}
+            className="text-2xl font-bold text-white drop-shadow-glow">
+            CHANCHAL
+          </motion.div>
+        </a>
+        {/* Mobile Toggle */}
         <button
           className="text-white lg:hidden"
-          onClick={() => setIsOpen(!isOpen)}>
+          onClick={() => setIsOpen((prev) => !prev)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* Desktop Links */}
+        {/* Desktop Nav Links */}
         <div className="hidden space-x-8 lg:flex">
           {NavbarContents.map(({ label, link }, index) => (
             <motion.a
@@ -70,7 +76,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Social + Theme Toggle */}
+        {/* Socials & Theme Toggle */}
         <div className="items-center hidden space-x-4 lg:flex">
           {SOCIAL_LINKS.map(({ icon: Icon, link }, index) => (
             <motion.a
@@ -91,7 +97,7 @@ const Navbar = () => {
             </motion.a>
           ))}
 
-          {/* Theme Toggle */}
+          {/* Toggle Dark Mode */}
           <motion.button
             onClick={() => setDarkMode((prev) => !prev)}
             whileHover={{ scale: 1.2 }}
@@ -124,6 +130,7 @@ const Navbar = () => {
               ))}
             </ul>
 
+            {/* Socials in Mobile */}
             <div className="flex justify-center py-4 space-x-6">
               {SOCIAL_LINKS.map(({ icon: Icon, link }, index) => (
                 <motion.a
