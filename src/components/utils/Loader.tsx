@@ -14,10 +14,10 @@ export const Loader = ({ messages, theme }: LoaderProps) => {
   useEffect(() => {
     const messageInterval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % messages.length);
-    }, 2000);
+    }, 2500);
 
     const dotInterval = setInterval(() => {
-      setDots((prev) => (prev.length >= 3 ? "" : `${prev}.`));
+      setDots((prev) => (prev.length >= 3 ? "" : prev + "."));
     }, 500);
 
     return () => {
@@ -33,27 +33,27 @@ export const Loader = ({ messages, theme }: LoaderProps) => {
           ? "bg-gradient-to-br from-black via-gray-900 to-black text-white"
           : "bg-gradient-to-br from-blue-100 via-white to-blue-200 text-gray-900"
       }`}>
-      {/* Stars or Background Animation */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle,_#222222_1px,_transparent_1px)] bg-[length:30px_30px] opacity-10" />
+      {/* Stars Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle,#444_1px,transparent_1px)] bg-[length:30px_30px] opacity-10" />
 
-      {/* Astronaut Lottie Animation */}
-      <div className="relative z-10 w-36 h-36 mb-6">
+      {/* Astronaut Lottie */}
+      <div className="relative z-10 mb-6 w-36 h-36">
         <DotLottieReact
           src="https://lottie.host/f88cee7f-e13a-4af0-97b2-6200724054be/TOHic1G72U.lottie"
-          loop
           autoplay
+          loop
         />
       </div>
 
-      {/* Message Text */}
+      {/* Typing Message */}
       <AnimatePresence mode="wait">
         <motion.div
           key={messages[currentIndex]}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.5 }}
-          className="z-10 text-xl font-semibold text-center px-4">
+          transition={{ duration: 0.4 }}
+          className="z-10 px-4 text-xl font-semibold text-center">
           {messages[currentIndex]}
           {dots}
         </motion.div>

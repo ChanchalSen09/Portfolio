@@ -1,10 +1,12 @@
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { TextFade, TypingEffect } from "../animations/TextAnimations";
-import AvatarImg from "../../assets/ghibliimg.png";
+import AvatarImg from "../../assets/AvtaarImgCroped.jpg";
 
 function MainAbout() {
   return (
-    <div className="flex flex-col items-center justify-center text-center md:flex-row md:text-left font-space-grotesk">
+    <div
+      className="flex flex-col items-center justify-center text-center md:flex-row md:text-left font-space-grotesk"
+      id="about">
       <div className="text-white">
         <TextFade direction="up">
           <h1 className="text-5xl font-bold text-white md:text-6xl drop-shadow-md">
@@ -24,19 +26,20 @@ function MainAbout() {
           </p>
         </TextFade>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="flex justify-center w-full mt-6 md:w-2/5 md:mt-0">
-        <img
-          src={AvatarImg}
-          alt="Chanchal Sen"
-          loading="lazy"
-          className="object-cover w-56 h-56 border-2 border-purple-500 rounded-full shadow-lg md:w-72 md:h-72 shadow-purple-800/40"
-        />
-      </motion.div>
+      <LazyMotion features={domAnimation}>
+        <m.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex justify-center w-full mt-6 md:w-2/5 md:mt-0">
+          <img
+            src={AvatarImg}
+            alt="Chanchal Sen"
+            loading="lazy"
+            className="object-cover w-56 h-56 border-2 border-purple-500 rounded-full shadow-lg md:w-72 md:h-72 shadow-purple-800/40"
+          />
+        </m.div>
+      </LazyMotion>
     </div>
   );
 }
