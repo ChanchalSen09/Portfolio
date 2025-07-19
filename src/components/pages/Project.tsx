@@ -74,7 +74,7 @@ export default function Projects() {
       id="projects">
       <div className="absolute inset-0 z-0 bg-black/70 backdrop-blur-sm" />
       <div className="relative z-10 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-white md:text-5xl mb-14 drop-shadow-md">
+        <h2 className="mb-10 text-4xl font-extrabold tracking-wide text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
           Projects
         </h2>
 

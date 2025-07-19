@@ -11,7 +11,7 @@ const Layout = (): React.JSX.Element => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2500); // can tweak time
+    const timer = setTimeout(() => setLoading(false), 3000); // can tweak time
     return () => clearTimeout(timer);
   }, []);
 
