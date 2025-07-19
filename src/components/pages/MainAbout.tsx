@@ -1,27 +1,28 @@
 import { motion } from "framer-motion";
 import { TextFade, TypingEffect } from "../animations/TextAnimations";
 import AvatarImg from "../../assets/ghibliimg.png";
+
 function MainAbout() {
   return (
-    <div className="flex flex-col items-center justify-center text-center md:flex-row md:text-left">
-      <div className="">
+    <div className="flex flex-col items-center justify-center text-center md:flex-row md:text-left font-space-grotesk">
+      <div className="text-white">
         <TextFade direction="up">
-          <h1 className="text-5xl font-bold text-black md:text-6xl">
+          <h1 className="text-5xl font-bold text-white md:text-6xl drop-shadow-md">
             Chanchal Sen
           </h1>
         </TextFade>
-        <p className="mt-6 text-lg leading-relaxed text-gray-600 md:text-xl ">
-          <TextFade direction="up">
-            <p className="font-bold">
+        <TextFade direction="up">
+          <p className="mt-6 text-lg leading-relaxed text-gray-300 md:text-xl">
+            <span className="font-bold text-purple-400">
               MERN Stack Developer | React.js Specialist | AI/ML Enthusiast
-            </p>
-          </TextFade>
-          <p className="mt-4">
-            <TypingEffect text="Building scalable web apps with React & Tailwind." />
-            <TypingEffect text="Passionate about frontend performance & seamless user experiences" />
-            <TypingEffect text="Exploring React Native & Machine Learning" />
+            </span>
+            <div className="mt-4 space-y-2">
+              <TypingEffect text="Building scalable web apps with React & Tailwind." />
+              <TypingEffect text="Passionate about frontend performance & seamless user experiences." />
+              <TypingEffect text="Exploring React Native & Machine Learning." />
+            </div>
           </p>
-        </p>
+        </TextFade>
       </div>
 
       <motion.div
@@ -33,7 +34,7 @@ function MainAbout() {
           src={AvatarImg}
           alt="Chanchal Sen"
           loading="lazy"
-          className="object-cover w-56 h-56 border-2 border-gray-300 rounded-full shadow-lg md:w-72 md:h-72"
+          className="object-cover w-56 h-56 border-2 border-purple-500 rounded-full shadow-lg md:w-72 md:h-72 shadow-purple-800/40"
         />
       </motion.div>
     </div>

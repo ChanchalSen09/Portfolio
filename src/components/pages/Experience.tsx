@@ -1,59 +1,77 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { experiences } from "../../constent";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
+import { FaCode, FaReact, FaNodeJs } from "react-icons/fa";
 
-export default function Experience() {
-  const [expanded, setExpanded] = useState<number | null>(null);
+const experiences = [
+  {
+    title: "Full Stack Developer",
+    company: "Extuent",
+    date: "April 2025 – Present",
+    icon: <FaCode />,
+    points: [
+      "Architecting and maintaining production-grade apps using Django and PL/SQL.",
+      "Designed RESTful APIs supporting microservices with real-time workflows.",
+      "Built responsive UIs with React.js and Tailwind CSS.",
+      "Reduced backend latency by 40% through profiling and query optimization.",
+      "Adopted Agile practices with CI/CD and peer reviews.",
+    ],
+  },
+  {
+    title: "React Developer Intern",
+    company: "Devnex Technologies",
+    date: "September 2024 – April 2025",
+    icon: <FaReact />,
+    points: [
+      "Built reusable React components with Redux and Tailwind.",
+      "Enhanced mobile responsiveness, improving UX by 18%.",
+      "Fixed cross-browser bugs, reducing UI issues by 35%.",
+      "Collaborated closely with backend teams for API integration.",
+    ],
+  },
+  {
+    title: "Software Developer Intern",
+    company: "DAPS Software Pvt. Ltd.",
+    date: "November 2023 – September 2024",
+    icon: <FaNodeJs />,
+    points: [
+      "Developed scalable Node.js/Express APIs with 99% uptime.",
+      "Improved SQL query speed by 30% for dashboards.",
+      "Delivered full-stack features in microservice systems.",
+      "Enhanced automated testing and performance debugging.",
+    ],
+  },
+];
+
+export default function ExperienceTimeline() {
   return (
-    <section className="py-12 px-6" id="#experience">
-      <h2 className="text-3xl font-bold text-center mb-6">Experience</h2>
-
-      <div className="relative space-y-6 border-l-2 border-gray-300 pl-6 w-full max-w-xl">
-        <div className="absolute -left-2 top-12 w-4 h-4 bg-blue-500 rounded-full border-4 border-white" />
-        <div className="absolute -left-2 top-48 w-4 h-4 bg-blue-500 rounded-full border-4 border-white" />
+    <div className="bg-black bg-[url('/galaxy-bg.png')] bg-cover bg-no-repeat text-white">
+      <h2 className="mb-10 text-4xl font-bold text-center text-white">
+        Experience
+      </h2>
+      <VerticalTimeline lineColor="#8884ff">
         {experiences.map((exp, index) => (
-          <motion.div
+          <VerticalTimelineElement
             key={index}
-            className="relative p-6 bg-white rounded-lg shadow-md hover:shadow-2xl transition-all"
-            whileHover={{ scale: 1.05 }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}>
-            <div className="flex items-center gap-3">
-              <img
-                src={exp.logo}
-                alt={exp.company}
-                className="w-12 h-12 rounded-full"
-              />
-              <div className="ml-[5px]">
-                <h3 className="text-xl font-semibold ">{exp.role}</h3>
-                <p className="text-lg text-gray-700 ">{exp.company}</p>
-                <p className="text-gray-600 text-sm">
-                  {exp.duration} {exp.location}
-                </p>{" "}
-              </div>
-            </div>
-            <button
-              className="mt-2 text-blue-500 font-semibold"
-              onClick={() => setExpanded(expanded === index ? null : index)}>
-              {expanded === index ? "Show Less" : "Show More"}
-            </button>
-            {expanded === index && (
-              <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-1">
-                {exp.responsibilities.map((resp, idx) => (
-                  <motion.li
-                    key={idx}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: idx * 0.1 }}>
-                    {resp}
-                  </motion.li>
-                ))}
-              </ul>
-            )}
-          </motion.div>
+            contentStyle={{ background: "#1e1e2f", color: "#ffffff" }}
+            contentArrowStyle={{ borderRight: "7px solid #8884ff" }}
+            date={exp.date}
+            iconStyle={{ background: "#8884ff", color: "#fff" }}
+            icon={exp.icon}>
+            <h3 className="text-xl font-bold">{exp.title}</h3>
+            <h4 className="font-semibold text-purple-300 text-md">
+              {exp.company}
+            </h4>
+            <ul className="mt-3 space-y-2 text-sm list-disc list-inside">
+              {exp.points.map((point, idx) => (
+                <li key={idx}>{point}</li>
+              ))}
+            </ul>
+          </VerticalTimelineElement>
         ))}
-      </div>
-    </section>
+      </VerticalTimeline>
+    </div>
   );
 }

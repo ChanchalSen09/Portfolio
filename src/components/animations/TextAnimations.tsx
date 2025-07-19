@@ -1,6 +1,5 @@
-import React from "react";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import React, { useRef } from "react";
+import { motion, useInView, Variants } from "framer-motion";
 
 export function TextFade({
   direction,
@@ -13,12 +12,23 @@ export function TextFade({
   className?: string;
   staggerChildren?: number;
 }) {
-  const FADE_DOWN = {
-    show: { opacity: 1, y: 0, transition: { type: "spring" } },
-    hidden: { opacity: 0, y: direction === "down" ? -18 : 18 },
+  const FADE_DOWN: Variants = {
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring" as const,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: direction === "down" ? -18 : 18,
+    },
   };
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
   return (
     <motion.div
       ref={ref}
@@ -44,9 +54,11 @@ export function TextFade({
   );
 }
 
+// TypingEffect component
 export function TypingEffect({ text = "Typing Effect" }: { text: string }) {
-  const ref = React.useRef(null);
+  const ref = useRef<HTMLHeadingElement | null>(null);
   const isInView = useInView(ref, { once: true });
+
   return (
     <h2
       ref={ref}

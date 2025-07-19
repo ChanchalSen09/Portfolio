@@ -5,6 +5,12 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "noEmit": true, // ⛔ Prevents .js files from being generated
+    "strict": true, // ✅ Optional but recommended
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "build"]
 }

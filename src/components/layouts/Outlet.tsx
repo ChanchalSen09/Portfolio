@@ -22,20 +22,11 @@ const Layout = (): React.JSX.Element => {
     <>
       {loading ? (
         <Loader
-          messages={[
-            "Welcome to My Awesome Portfolio!",
-            "Crafting Something Amazing",
-            "Just a moment...",
-          ]}
+          messages={["Crafting Something Amazing", "Just a moment..."]}
           theme={"dark"}
         />
       ) : (
-        <div
-          className={
-            theme === "dark"
-              ? "bg-gray-900 text-white"
-              : "bg-gray-100 text-gray-900"
-          }>
+        <div>
           <Navbar />
           <Outlet />
           <Footer />
