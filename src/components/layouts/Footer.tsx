@@ -23,7 +23,7 @@ export default function Footer() {
       <div className="absolute inset-0 z-0 bg-repeat bg-stars opacity-20 animate-pulse" />
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] opacity-90" />
 
-      <div className="relative z-10 px-6 py-16 mx-auto max-w-7xl">
+      <div className="relative z-10 max-w-screen-xl px-6 py-16 mx-auto">
         <LazyMotion features={domAnimation}>
           <m.div
             initial={{ opacity: 0, y: 30 }}
@@ -100,7 +100,7 @@ export default function Footer() {
                 onClick={handleDownload}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-5 py-3 text-sm font-semibold transition-all rounded-lg shadow-md ${
+                className={`px-6 py-4 text-sm font-semibold transition-all rounded-lg shadow-md ${
                   isDownloaded
                     ? "bg-green-500 cursor-default"
                     : "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500"

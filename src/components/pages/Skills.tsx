@@ -93,7 +93,7 @@ export default function Skills() {
 
   return (
     <section className="px-6 py-12 text-white font-space-grotesk" id="skills">
-      <h2 className="mb-10 text-3xl font-bold text-center drop-shadow-md">
+      <h2 className="mb-10 text-4xl font-extrabold tracking-wide text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
         Skills & Tech Stack
       </h2>
 

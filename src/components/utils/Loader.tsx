@@ -14,7 +14,7 @@ export const Loader = ({ messages, theme }: LoaderProps) => {
   useEffect(() => {
     const messageInterval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % messages.length);
-    }, 2500);
+    }, 3000);
 
     const dotInterval = setInterval(() => {
       setDots((prev) => (prev.length >= 3 ? "" : prev + "."));

@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { NavbarContents, SOCIAL_LINKS } from "../../constent";
 
 const Navbar = () => {
@@ -98,12 +98,12 @@ const Navbar = () => {
           ))}
 
           {/* Toggle Dark Mode */}
-          <motion.button
+          {/* <motion.button
             onClick={() => setDarkMode((prev) => !prev)}
             whileHover={{ scale: 1.2 }}
             className="text-white transition-all hover:text-yellow-300">
             {darkMode ? <Sun size={22} /> : <Moon size={22} />}
-          </motion.button>
+          </motion.button> */}
         </div>
       </div>
 
