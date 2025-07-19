@@ -39,7 +39,7 @@ export const Loader = ({ messages, theme }: LoaderProps) => {
       {/* Astronaut Lottie Animation */}
       <div className="relative z-10 w-36 h-36 mb-6">
         <DotLottieReact
-          src="https://lottie.host/2eb217ff-f971-473e-b6a4-fd790771ba0a/YV50nlyaXl.lottie"
+          src="https://lottie.host/f88cee7f-e13a-4af0-97b2-6200724054be/TOHic1G72U.lottie"
           loop
           autoplay
         />
