@@ -15,7 +15,7 @@ import LeetcodeIco from "./assets/leetcodeioc.svg";
 import { Linkedin, Youtube, Github } from "lucide-react";
 
 export const RESUME_LINK =
-  "https://drive.google.com/file/d/1-OEiWLJvSzjiVYmykCIHKql5xcwqFGbL/view?usp=drive_link";
+  "https://drive.google.com/file/d/1JqSF5I9pgxyqWEm9WaP5L7x2dVjzyntM/view?usp=sharing";
 export const NavbarContents = [
   { label: "EXPERIENCE", link: "#experience" },
   { label: "SKILLS", link: "#skills" },
