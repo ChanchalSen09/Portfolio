@@ -20,7 +20,7 @@ const experiences = [
     ],
   },
   {
-    title: "React Developer Intern",
+    title: "Frontend Developer",
     company: "Devnex Technologies",
     date: "Sep 2024 – Apr 2025",
     icon: <FaReact />,
@@ -73,3 +73,4 @@ export default function ExperienceTimeline() {
     </div>
   );
 }
+
