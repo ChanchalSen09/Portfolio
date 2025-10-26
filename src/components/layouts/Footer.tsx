@@ -1,6 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
-import { SOCIAL, TECH_STACK, RESUME_LINK } from "../../constent";
+import { SOCIAL_LINKS, TECH_STACK, RESUME_LINK } from "../../constent";
 
 export default function Footer() {
   const [isDownloaded, setIsDownloaded] = useState(false);
@@ -38,10 +40,10 @@ export default function Footer() {
               <h2 className="text-3xl font-bold text-purple-300 drop-shadow-md">
                 Chanchal Sen
               </h2>
-              <p className="mt-3 text-sm text-gray-400 max-w-[20rem]">
+              <div className="mt-3 text-sm text-gray-400 max-w-[20rem]">
                 Passionate Developer | Crafting Seamless Experiences in Code &
                 Cosmos.
-              </p>
+              </div>
             </m.div>
 
             {/* Column 2 - Tech Stack */}
@@ -59,7 +61,12 @@ export default function Footer() {
                     whileHover={{ scale: 1.3, rotate: 15 }}
                     transition={{ type: "spring", stiffness: 300 }}
                     className={`p-2 rounded-full bg-white/10 ${color}`}>
-                    <Icon />
+                    {/* Ensure Icon is a component */}
+                    {typeof Icon === "function" ? (
+                      <Icon />
+                    ) : (
+                      <img src={Icon} alt="icon" className="w-6 h-6" />
+                    )}
                   </m.div>
                 ))}
               </div>
@@ -74,17 +81,21 @@ export default function Footer() {
                 Connect with Me
               </h3>
               <div className="flex space-x-4">
-                {SOCIAL.map(({ id, icon: Icon, url }) => (
+                {SOCIAL_LINKS.map(({ id, icon: Icon, link }) => (
                   <m.a
                     key={id}
-                    href={url}
+                    href={link}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                     className="text-xl text-gray-400 transition hover:text-cyan-300"
                     aria-label="Social Link">
-                    <Icon />
+                    {typeof Icon === "function" ? (
+                      <Icon />
+                    ) : (
+                      <img src={Icon} alt="social" className="w-6 h-6" />
+                    )}
                   </m.a>
                 ))}
               </div>

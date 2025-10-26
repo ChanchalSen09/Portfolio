@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { NavbarContents, SOCIAL_LINKS } from "../../constent";
+import { NAVBAR_CONTENTS, SOCIAL_LINKS } from "../../constent";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +39,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 z-50 w-full shadow-lg backdrop-blur-md">
       {/* Background Layer */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] opacity-95" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br opacity-95" />
 
       <div className="container relative z-10 flex items-center justify-between px-6 py-4 mx-auto">
         {/* Logo */}
@@ -59,10 +59,9 @@ const Navbar = () => {
           onClick={() => setIsOpen((prev) => !prev)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
-
         {/* Desktop Nav Links */}
         <div className="hidden space-x-8 lg:flex">
-          {NavbarContents.map(({ label, link }, index) => (
+          {NAVBAR_CONTENTS.map(({ label, link }, index) => (
             <motion.a
               key={index}
               href={link}
@@ -75,9 +74,12 @@ const Navbar = () => {
             </motion.a>
           ))}
         </div>
-
-        {/* Socials & Theme Toggle */}
-        <div className="items-center hidden space-x-4 lg:flex">
+        {/* Socials & Theme Toggle */}{" "}
+        <div
+          className="flex flex-row gap-[18px] px-4 py-2.5 rounded-full
+          bg-primary-dark/2 dark:bg-primary/1 border-2 border-primary-dark/3
+          dark:border-primary/3 hover:bg-primary-dark/6 hover:dark:bg-primary/6
+          transition-colors duration-400">
           {SOCIAL_LINKS.map(({ icon: Icon, link }, index) => (
             <motion.a
               key={index}

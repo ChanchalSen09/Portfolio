@@ -1,143 +1,114 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import type { JSX } from "react";
+import { PROJECTS } from "../../constent";
 import {
   SiReact,
   SiNodedotjs,
   SiMongodb,
   SiExpress,
   SiTailwindcss,
-  SiFirebase,
   SiTypescript,
-  SiJavascript,
   SiPostman,
+  SiNextdotjs,
+  SiPrisma,
+  SiClerk,
+  SiShadcnui,
 } from "react-icons/si";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { TbDatabase } from "react-icons/tb";
+import { GiCrystalBall } from "react-icons/gi";
 import { useMemo } from "react";
 
-// Assets
-import QuizeDemo1 from "../../assets/ProjectImages/Quizifyf/Demo1.webp";
-import QuizeDemo2 from "../../assets/ProjectImages/Quizifyf/Demo2.webp";
-import QuizeDemo3 from "../../assets/ProjectImages/Quizifyf/Demo3.webp";
-import LearnhubDemo1 from "../../assets/ProjectImages/Learnhub/Demo1.webp";
-import LearnhubDemo2 from "../../assets/ProjectImages/Learnhub/Demo2.webp";
-import LearnhubDemo3 from "../../assets/ProjectImages/Learnhub/Demo3.webp";
-
-// Projects Data
-const projects = [
-  {
-    name: "Quizfy",
-    description:
-      "A full-stack quiz platform with JWT auth, dynamic quiz creation, and real-time feedback.",
-    images: [QuizeDemo1, QuizeDemo2, QuizeDemo3],
-    liveLink: "https://quizfy-three.vercel.app/",
-    codeLink: "https://github.com/ChanchalSen09/Quiz-App",
-    techStack: [
-      "React",
-      "Node.js",
-      "TypeScript",
-      "MongoDB",
-      "Express",
-      "Tailwind CSS",
-    ],
-  },
-  {
-    name: "Learnhub",
-    description:
-      "A scalable AI-based learning platform with secure backend, JWT & OTP verification.",
-    images: [LearnhubDemo1, LearnhubDemo2, LearnhubDemo3],
-    liveLink: "https://codelearn-swart.vercel.app/",
-    codeLink: "https://github.com/ChanchalSen09/Backend_Learnhub",
-    techStack: ["Node.js", "Express", "MongoDB", "Postman"],
-  },
-];
-
 export default function Projects() {
-  const techIcons = useMemo<Record<string, JSX.Element>>(
+  const techIcons = useMemo(
     () => ({
       React: <SiReact className="text-cyan-400" />,
       "Node.js": <SiNodedotjs className="text-green-400" />,
       MongoDB: <SiMongodb className="text-green-500" />,
       Express: <SiExpress className="text-gray-400" />,
       "Tailwind CSS": <SiTailwindcss className="text-sky-300" />,
-      Firebase: <SiFirebase className="text-yellow-400" />,
       TypeScript: <SiTypescript className="text-blue-400" />,
-      JavaScript: <SiJavascript className="text-yellow-300" />,
       Postman: <SiPostman className="text-orange-400" />,
+      "Next.js": <SiNextdotjs className="text-white" />,
+      Prisma: <SiPrisma className="text-blue-300" />,
+      NeonDB: <TbDatabase className="text-green-300" />,
+      Clerk: <SiClerk className="text-purple-400" />,
+      "Shadcn UI": <SiShadcnui className="text-pink-400" />,
+      "Gemini API": <GiCrystalBall className="text-yellow-400" />,
     }),
     []
   );
 
   return (
     <section
-      className="w-full px-6 py-20 text-white font-spaceGrotesk bg-[url('/stars-bg.svg')] bg-cover bg-center relative"
-      id="projects">
-      <div className="absolute inset-0 z-0 bg-black/70 backdrop-blur-sm" />
+      id="projects"
+      className="relative z-10 w-full py-20 px-6 text-white font-spaceGrotesk bg-[url('/stars-bg.svg')] bg-cover bg-center">
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
       <div className="relative z-10 max-w-6xl mx-auto">
-        <h2 className="mb-10 text-4xl font-extrabold tracking-wide text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
+        <h2 className="text-4xl font-bold text-center text-transparent mb-14 bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
           Projects
         </h2>
 
-        <div className="grid gap-10 md:grid-cols-2">
-          {projects.map((project, idx) => (
-            <div
-              key={idx}
-              className="overflow-hidden bg-gradient-to-br from-[#141414] to-[#1e1e1e] border border-[#333] rounded-2xl shadow-[0_0_15px_#6b21a8] hover:shadow-purple-500/40 transition-all duration-300">
-              <Carousel
-                showThumbs={false}
-                showStatus={false}
-                infiniteLoop
-                autoPlay
-                interval={5000}
-                showArrows={false}
-                swipeable
-                emulateTouch>
-                {project.images.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    alt={`${project.name}-screenshot-${i + 1}`}
-                    className="object-cover w-full h-56 md:h-64"
-                    loading="lazy"
-                  />
-                ))}
-              </Carousel>
+        <div className="flex flex-col gap-20">
+          {PROJECTS.map((project, i) => (
+            <motion.div
+              key={project.name}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className={`flex flex-col md:flex-row ${
+                i % 2 === 1 ? "md:flex-row-reverse" : ""
+              } items-center gap-10 bg-gradient-to-br from-[#151515] to-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 hover:shadow-[0_0_25px_#6b21a8] transition-all`}>
+              {/* Project Image */}
+              <motion.img
+                whileHover={{ scale: 1.03 }}
+                src={project.image}
+                alt={`${project.name} preview screenshot`}
+                className="object-cover w-full shadow-lg md:w-1/2 rounded-xl"
+              />
 
-              <div className="p-6">
-                <h3 className="mb-2 text-2xl font-semibold text-purple-300">
+              {/* Project Details */}
+              <div className="w-full space-y-4 md:w-1/2">
+                <h3 className="text-2xl font-semibold text-purple-300">
                   {project.name}
                 </h3>
-                <p className="mb-4 text-gray-300">{project.description}</p>
+                <p className="leading-relaxed text-gray-300">
+                  {project.description}
+                </p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.map((tech, i) => (
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.techStack.map((tech, idx) => (
                     <span
-                      key={i}
-                      className="flex items-center gap-1 px-2 py-1 text-sm bg-[#222] text-white rounded-md"
-                      title={tech}>
-                      {techIcons[tech] ?? null} {tech}
+                      key={idx}
+                      className="flex items-center gap-1 px-2.5 py-1.5 bg-[#222] text-sm rounded-md text-white hover:bg-purple-800 transition">
+                      {techIcons[tech]} {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-6 mt-3 text-sm font-semibold">
+                {/* Links */}
+                <div className="flex gap-6 pt-4 text-sm font-medium">
                   <a
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-purple-400 hover:underline">
+                    aria-label={`Live demo of ${project.name}`}
+                    className="flex items-center gap-2 text-purple-400 transition hover:text-purple-300">
                     <FaExternalLinkAlt /> Live
                   </a>
                   <a
                     href={project.codeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-300 hover:underline">
+                    aria-label={`Source code of ${project.name}`}
+                    className="flex items-center gap-2 text-gray-400 transition hover:text-white">
                     <FaGithub /> Code
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
