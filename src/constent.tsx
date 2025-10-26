@@ -40,6 +40,7 @@ import { FaAws } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import QuizifyDemo from "./assets/ProjectImages/Quizifyf/Demo1.webp";
 import LearnhubDemo from "./assets/image.png";
+import { JSX } from "react";
 // ------------------------------ Types ------------------------------
 
 export interface NavbarItem {
@@ -48,6 +49,7 @@ export interface NavbarItem {
 }
 
 export interface SocialLink {
+  id: string;
   icon: React.ComponentType<any>;
   link: string;
 }
@@ -62,7 +64,7 @@ export interface Experience {
   title: string;
   company: string;
   date: string;
-  icon: React.ComponentType<any>;
+  icon: React.JSX.Element;
   points: string[];
 }
 
@@ -116,13 +118,22 @@ export const NAVBAR_CONTENTS: NavbarItem[] = [
 
 // ------------------------------ Social Links ------------------------------
 export const SOCIAL_LINKS: SocialLink[] = [
-  { icon: FaLinkedin, link: "https://www.linkedin.com/in/chanchal09/" },
   {
+    id: "linkedin",
+    icon: FaLinkedin,
+    link: "https://www.linkedin.com/in/chanchal09/",
+  },
+  {
+    id: "youtube",
     icon: FaYoutube,
     link: "https://youtube.com/@chanchalsen09?si=9G8stGXGzk52hxsg",
   },
-  { icon: FaGithub, link: "https://github.com/ChanchalSen09" },
-  { icon: SiLeetcode, link: "https://leetcode.com/u/Chanchalsen09/" },
+  { id: "Github", icon: FaGithub, link: "https://github.com/ChanchalSen09" },
+  {
+    id: "Leetcode",
+    icon: SiLeetcode,
+    link: "https://leetcode.com/u/Chanchalsen09/",
+  },
 ];
 
 // ------------------------------ Tech Stack ------------------------------

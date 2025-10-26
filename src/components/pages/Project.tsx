@@ -83,7 +83,7 @@ export default function Projects() {
                     <span
                       key={idx}
                       className="flex items-center gap-1 px-2.5 py-1.5 bg-[#222] text-sm rounded-md text-white hover:bg-purple-800 transition">
-                      {techIcons[tech]} {tech}
+                      {techIcons[tech as keyof typeof techIcons]} {tech}
                     </span>
                   ))}
                 </div>

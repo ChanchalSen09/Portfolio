@@ -61,18 +61,20 @@ const Navbar = () => {
         </button>
         {/* Desktop Nav Links */}
         <div className="hidden space-x-8 lg:flex">
-          {NAVBAR_CONTENTS.map(({ label, link }, index) => (
-            <motion.a
-              key={index}
-              href={link}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileHover={{ scale: 1.1 }}
-              className="font-medium text-white transition-all hover:text-cyan-300">
-              {label}
-            </motion.a>
-          ))}
+          {NAVBAR_CONTENTS.map(
+            (item: { label: string; link: string }, index: number) => (
+              <motion.a
+                key={index}
+                href={item.link}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ scale: 1.1 }}
+                className="font-medium text-white transition-all hover:text-cyan-300">
+                {item.label}
+              </motion.a>
+            )
+          )}
         </div>
         {/* Socials & Theme Toggle */}{" "}
         <div
@@ -119,7 +121,7 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="absolute left-0 w-full bg-[#121212] top-16 shadow-md dark:bg-black lg:hidden">
             <ul className="flex flex-col px-6 py-4 space-y-6 text-white">
-              {NavbarContents.map(({ label, link }, index) => (
+              {NAVBAR_CONTENTS.map(({ label, link }, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
