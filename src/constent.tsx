@@ -164,9 +164,9 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    title: "Frontend Developer",
+    title: "Frontend Developer Intern",
     company: "Devnex Technologies",
-    date: "September 2024 – April 2025",
+    date: "May 2024 – April 2025",
     icon: <FaReact className="text-white" />,
     points: [
       "Engineered dynamic, reusable components using React.js, Redux, and Tailwind CSS.",
@@ -177,7 +177,7 @@ export const EXPERIENCES: Experience[] = [
   {
     title: "Software Developer Intern",
     company: "DAPS Software Pvt. Limited",
-    date: "November 2023 – September 2024",
+    date: "November 2023 – May 2024",
     icon: <FaNodeJs className="text-white" />,
     points: [
       "Developed scalable APIs using Node.js and Express.js with 99% uptime.",
