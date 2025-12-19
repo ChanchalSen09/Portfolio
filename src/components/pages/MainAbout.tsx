@@ -2,7 +2,7 @@
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { TextFade, TypingEffect } from "../animations/TextAnimations";
-import AvatarImg from "../../assets/AvtaarImgCropedimg.webp";
+import AvatarImg from "../../assets/1766154921696.webp";
 
 function MainAbout() {
   return (
